@@ -38,8 +38,7 @@
 # 2. Architecture
 
 - Block Diagaram
-
-![Block diagram](Image/risc-v rv32i-47.jpg)
+![Block diagram](Image/my_img.jpg)
 
 - Top module
 

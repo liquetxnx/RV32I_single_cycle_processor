@@ -134,3 +134,13 @@
 
 - waves_cpu.vcd
 	- waveform dump for debugging in GTKWave
+
+# 6. How to Run?
+>First of all, you have to install gtkwave, iverilog, gcc compiler
+>OS is Ubuntu.
+
+- run "make"
+- If you see how assembly commands are existed, "make dump"
+- You can see two significant files, "trace.log" and "waves_cpu.vcd"
+- If want to see simulation file, run "gtkwave waves_cpu.vcd"
+- Then, check trace.log and  simulation whether it is corrected.

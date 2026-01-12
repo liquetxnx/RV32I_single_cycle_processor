@@ -69,24 +69,29 @@
 		-Mux 4 to 1
 
 
-# 3. Addressing 
+# 3. Endians and Addressing 
+## Endians
+- Instrution is stored by 1-byte little endians in IM.
+	- For example, Instruction `0x01020304` is stored by `04 03 02 01` in IM
 
+## Addressing
+### Insturtion Memory(IM)
 - PC is byte address (increments by 4 byte) :
     - pc_next = pc + 4 (unless branch/jump)
-- IM is stored as 32-bit words (array of mem[word_index])
-- Instruction fetch uses word index :
-	- im_index = pc >> 2
-	- It is implemented by im_index = pc[6:2]
+- IM is stored as 8-bit bytes (array of mem[byte_index])
+- Size is `4KB`
+- Instruction fetch uses in bytes and by little - endians :
+	- pc = current pc address (1bytes)
+	- Instr = [8bytes, 8bytes, 8bytes, 8bytes] = [IM[pc+3], IM[pc+2], IM[pc+1], IM[pc]]
 -  Therefore pc address must be word-aligned for correct instruction fetch.
 
+### Data Memory
 - Data memory is also stored as 32-bit words like IM (array of mem[word_index])
+- Size is `16KB`
 - Effective address is byte addresses; 
 	- DMEM_index = alu_result >> 2
-	- It is implemented by DMEM_index = alu_result[6:2]
-- ***lb/lh/sb/sh are not supported*** in my processor.
+	- It is implemented by DMEM_index = alu_result[11:2]
 
-- Instrution is stored by 2-byte little endians in IM.
-	- For example, Instruction `0x01020304` is stored by `04 03 02 01` in IM
 
 # 4. Implmented Instructions
 

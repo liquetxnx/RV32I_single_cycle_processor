@@ -13,9 +13,7 @@ mem[1]=32'h00300113;
 mem[2]=32'h001101B3;
 */
 initial begin
-    $display("Start");
     $readmemh("prog.hex", mem);
-    $display("end");
 end
 
 assign Instr={mem[next_address+3], mem[next_address+2], mem[next_address+1], mem[next_address] };

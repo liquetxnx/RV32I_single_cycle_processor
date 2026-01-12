@@ -59,7 +59,7 @@ always @(*) begin
     end
 
     J_type:begin
-        A_Sel=0;/*default*/ B_Sel=0;/*default*/ ALU_Op=2'b00;/*default*/ PcSrc =2'b01; RegWrite= 1; MemWrite=0; MemtoReg = 2'b00;/*default*/ ImmSrc = 3'b100;
+        A_Sel=0;/*default*/ B_Sel=0;/*default*/ ALU_Op=2'b00;/*default*/ PcSrc =2'b01; RegWrite= 1; MemWrite=0; MemtoReg = 2'b00;/*default*/ ImmSrc = 3'b011;
     end
 
 

@@ -108,9 +108,6 @@
 | U | `lui`, `auipc` | ✅ | Large constant / PC-relative |
 | J | `jal` | ✅ | Link register writeback |
 | I (Jump) | `jalr` | ✅ | Target = `(rs1 + imm) & ~1` |
-| System | `ecall`, `ebreak` | ❌ | Not implemented (no trap/CSR) |
-| FENCE | `fence`, `fence.i` | ❌ | Not implemented |
-| Misaligned | — | ❌ | Misaligned memory access not handled |
 | RV32M | `mul/div/rem*` | ❌ | Not implemented |
 
 
@@ -122,19 +119,21 @@
 
 - Branch path: loop condition A < B, z==B and early break
 
-- Jump/Link path: jalr via function pointer call (fp(A)) and jal path
+- Jump/Link path: 
+	- jalr via function pointer call (fp(A))
+	- jal via going branch address
 
 - ALU + immediate generation: addi-style arithmetic and immediate decoding
 
 - Large constant generation: 0x123456 produced by lui + addi
 
-- Data memory path: sw then lw through a fixed memory-mapped address (0x200)
+- Data memory path: sw then lw through variable assignment and usage 
 
 ## Simulation outputs
 
 - trace.log
-	- prints register writeback events: pc, rd, wdata
-	- prints store events: pc, store addr, wdata
+	- prints register writeback events: pc(hex), reg_indx(deci), wdata(deci)
+	- prints store events: pc(hex), mem_addr(hex), wdata(deci)
 	- (cycle count is not printed)
 
 - waves_cpu.vcd

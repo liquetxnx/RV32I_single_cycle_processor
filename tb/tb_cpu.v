@@ -43,13 +43,16 @@ always #1 clk = ~clk;
 `define ALU_OUT DUT.datapath_inst.alu_out
 
 
+initial begin
+     $fdisplay(fd,"Type:: pc: hexa  reg_indx: deci, mem_addr: hexa  wdata: deci\n");
+end
 
 always @(posedge clk)begin
     cycles <= cycles +1;
-
-     if (!reset) begin
-        if (`REG_SIG) $fdisplay(fd,"pc=%h rd=%d wdata=%d", `PC_SIG, `INSTR[11:7], `WDATA);
-        if (`MEM_SIG) $fdisplay(fd,"pc=%h store addr=%h wdata=%d", `PC_SIG, `ALU_OUT, `MEM_DATA); //store
+    
+    if (!reset) begin
+        if (`REG_SIG) $fdisplay(fd,"REG :: pc= %h \treg_indx=%8d  \t wdata=%8d", `PC_SIG, `INSTR[11:7], `WDATA);
+        if (`MEM_SIG) $fdisplay(fd,"MEM :: pc= %h \tmem_addr=%08h \t wdata=%8d", `PC_SIG, `ALU_OUT, `MEM_DATA); //store
 end
     
     if(cycles > MAX_CYCLES) begin

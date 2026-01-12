@@ -136,7 +136,8 @@
 	- waveform dump for debugging in GTKWave
 
 # 6. How to Run?
->First of all, you have to install gtkwave, iverilog, gcc compiler
+>First of all, you have to install gtkwave, iverilog, gcc compiler. 
+
 >OS is Ubuntu.
 
 - run "make"

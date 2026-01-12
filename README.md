@@ -78,7 +78,7 @@
 ### Insturtion Memory(IM)
 - PC is byte address (increments by 4 byte) :
     - pc_next = pc + 4 (unless branch/jump)
-- IM is stored as 8-bit bytes (array of mem[byte_index])
+- IM is stored as 8-bit (1-bytes) ( `mem[1024][8]` )
 - Size is `4KB`
 - Instruction fetch uses in bytes and by little - endians :
 	- pc = current pc address (1bytes)
@@ -86,7 +86,7 @@
 -  Therefore pc address must be word-aligned for correct instruction fetch.
 
 ### Data Memory
-- Data memory is also stored as 32-bit words like IM (array of mem[word_index])
+- Data memory is also stored as 32-bit words like IM (array of `mem[word_index]`)
 - Size is `16KB`
 - Effective address is byte addresses; 
 	- DMEM_index = alu_result >> 2

@@ -2,12 +2,12 @@
 
 # 0.TL
 
-- Core : RV32I single cycle processor (Verilog)
-- Support : R, I, S, B, J, U type (only lw and sw are supported in loading and store instrution)
-- Addressing : PC and IM(4KB) is byte-addressed otherwise, Memory(16KB) are word-addressed.
-- Endians : Little - endians (RISC-V default)
-- Verification : self-checking C-code excuted by tb_cpu.v
-- Run : make, (and "gtkwave waves_cpu.vcd")
+- **Core** : RV32I single cycle processor (Verilog)
+- **Support** : R, I, S, B, J, U type (only lw and sw are supported in loading and store instrution)
+- **Addressing** : PC and IM(4KB) is byte-addressed otherwise, Memory(16KB) are word-addressed.
+- **Endians** : Little - endians (RISC-V default)
+- **Verification** : self-checking C-code excuted by tb_cpu.v
+- **Run** : make, (and "gtkwave waves_cpu.vcd")
 
 ## Environment :
 - 	Linux

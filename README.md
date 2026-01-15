@@ -123,8 +123,7 @@
 - All command except ***AUIPC*** is verified on tb_cpu.vcd
 >It is difficult to indicate ***AUIPC*** on C code in small memory(16KB)
 
-## Explanation 
-- Verify all command and store its value in `sig[]` array.
+- Load and Store and JAL command are verified if verification are all passed. 
 
 ### Why I used signature (sig[]) array for verification?**
 

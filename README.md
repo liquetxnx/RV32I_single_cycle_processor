@@ -148,14 +148,18 @@ Overall, the signature array turns CPU verification into a simple PASS/FAIL memo
 ## Simulation outputs
 
 - **Verification_results**
+	- ![Verification_result](Image/verification_result.png)
 	- **Target files** indicated verification is corrected. It store simple PASS/FAIL memory comparison.
+	
 
 - trace.log
+	- ![trace_log](Image/trace_log.png)
 	- prints register writeback events: pc(hex), reg_indx(deci), wdata(deci)
 	- prints store events: pc(hex), mem_addr(hex), wdata(deci)
 	- (cycle count is not printed)
 
 - waves_cpu.vcd
+	- ![waveform](Image/simulation.png)
 	- waveform dump for debugging in GTKWave
 
 # 6. How to Run?

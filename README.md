@@ -172,7 +172,7 @@ Overall, the signature array turns CPU verification into a simple PASS/FAIL memo
 ## Simulation outputs
 
 - **Verification_results**
-	- ![Verification_result](Image/verification_result.png)
+	- ![Verification_result](Image/verifi_result.png)
 	- **Target files** indicated verification is corrected. It store simple PASS/FAIL memory comparison.
 	
 

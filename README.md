@@ -13,6 +13,7 @@ This project is clear.
 - [5. Verification](#5-verification)
 - [6. How to Run?](#6-how-to-run)
 - [7. Limitation and Next Goal](#7-limitation-and-next-goal)
+- [8. License](#7-license)
 
 
 # 0. TL/DR
@@ -33,7 +34,7 @@ This project is clear.
 
 ## Run (manual)
 -	make
--	gtkwave cpu.vcd
+-	gtkwave waves_cpu.vcd
 
 ## Expected output(file)
 - Verifiaction_result (pass/fail file)
@@ -64,31 +65,31 @@ This project is clear.
 
 - Top module
 
-	-Control unit
+	- Control unit
 
-	-Data path
+	- Data path
 
-		-PC(register)
+		- PC(register)
 
-		-PC_next
+		- PC_next
 
-		-Instruction Memory(IM)	
+		- Instruction Memory(IM)	
 
-		-Register File
+		- Register File
 
-		-ALU
+		- ALU
 
-		-ALU_Control
+		- ALU_Control
 
-		-Immediate Generation(ImmGen)
+		- Immediate Generation(ImmGen)
 
-		-Memory
+		- Memory
 
-		-Branch_Unit
+		- Branch_Unit
 
-		-Mux 2 to 1
+		- Mux 2 to 1
 
-		-Mux 4 to 1
+		- Mux 4 to 1
 
 
 
@@ -151,7 +152,7 @@ This project is clear.
 
 - Load and Store and JAL command are verified if verification are all passed. 
 
-### Why I used signature (sig[]) array for verification?**
+### Why I used signature (sig[]) array for verification?
 
 To verify the CPU behavior without relying on waveform inspection, I used a memory-mapped signature array (sig[]) as a verification output buffer.
 The program writes the results of key operations (ALU instructions, branches, loads/stores, jumps, etc.) into sig[], which is fixed at address 0x200 in data memory.
@@ -194,11 +195,12 @@ Overall, the signature array turns CPU verification into a simple PASS/FAIL memo
 ## Command
 - `make`
 	- make all verification files. such as **Verification_results**, trace.log, waves_cpu.vcd.
-- 'make dump'
+- `make dump`
 	- make rv32i assembly files on `prog.c` code.
-- 'make clean'
+- `make clean`
 	- clean all files from 'make' command
-
+- `gtkwave waves_cpu_vcd`
+	- After `make` command, open simulation wave form.
 
 # 7. Limitation and Next Goal
 

@@ -19,6 +19,7 @@
 -	gtkwave cpu.vcd
 
 ## Expected output(file)
+- Verifiaction_result (pass/fail file)
 - trace.log (log data when reg_write, mem_write happen)
 - waves_cpu.v (simulation data)
 
@@ -105,7 +106,7 @@
 | I (Load) | `lw` | ✅ | **Word only** |
 | S (Store) | `sw` | ✅ | **Word only** |
 | B | `beq`, `bne`, `blt`, `bge`, `bltu`, `bgeu` | ✅ | Branch compare + PC redirect |
-| U | `lui`, `auipc` | ✅ | Large constant / PC-relative |
+| U | `lui`, `auipc` | ✅⚠️ | Large constant / PC-relative *AUIPC verification is not contained on verification* |
 | J | `jal` | ✅ | Link register writeback |
 | I (Jump) | `jalr` | ✅ | Target = `(rs1 + imm) & ~1` |
 | RV32M | `mul/div/rem*` | ❌ | Not implemented |
@@ -117,19 +118,35 @@
 
 ## What this verifies
 
-- Branch path: loop condition A < B, z==B and early break
+- Operate cpu by simple c code(*prog.c*) to verification.
 
-- Jump/Link path: 
-	- jalr via function pointer call (fp(A))
-	- jal via going branch address
+- All command except ***AUIPC*** is verified on tb_cpu.vcd
+>It is difficult to indicate ***AUIPC*** on C code in small memory(16KB)
 
-- ALU + immediate generation: addi-style arithmetic and immediate decoding
+## Explanation 
+- Verify all command and store its value in `sig[]` array.
 
-- Large constant generation: 0x123456 produced by lui + addi
+### Why I used signature (sig[]) array for verification?**
 
-- Data memory path: sw then lw through variable assignment and usage 
+To verify the CPU behavior without relying on waveform inspection, I used a memory-mapped signature array (sig[]) as a verification output buffer.
+The program writes the results of key operations (ALU instructions, branches, loads/stores, jumps, etc.) into sig[], which is fixed at address 0x200 in data memory.
+The stack pointer is initialized to 0x4000, so the stack grows downward while keeping the signature region safe from being overwritten.
+With this setup, the testbench can simply monitor this small memory region and perform a direct comparison:
+
+
+Deterministic and scalable testing: Instead of manually tracing internal signals, I can validate many instructions by checking a compact, fixed memory window.
+
+
+Fast debugging: If a mismatch occurs, the failing signature index immediately shows which step or instruction sequence is incorrect, avoiding long waveform debugging sessions.
+
+
+Overall, the signature array turns CPU verification into a simple PASS/FAIL memory comparison, making regression testing much more efficient and reproducible.
+
 
 ## Simulation outputs
+
+- **Verification_results**
+	- **Target files** indicated verification is corrected. It store simple PASS/FAIL memory comparison.
 
 - trace.log
 	- prints register writeback events: pc(hex), reg_indx(deci), wdata(deci)
@@ -144,8 +161,10 @@
 
 >OS is Ubuntu.
 
-- run "make"
-- If you see how assembly commands are existed, "make dump"
-- You can see two significant files, "trace.log" and "waves_cpu.vcd"
-- If want to see simulation file, run "gtkwave waves_cpu.vcd"
-- Then, check trace.log and  simulation whether it is corrected.
+## Command
+- `make`
+	- make all verification files. such as **Verification_results**, trace.log, waves_cpu.vcd.
+- 'make dump'
+	- make rv32i assembly files on `prog.c` code.
+- 'make clean'
+	- clean all files from 'make' command

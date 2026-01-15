@@ -50,7 +50,7 @@ end
 
     assign BrEq = (result==32'b0);
     assign BrLt = overflow^result[31];
-    assign BrLtU = result[31];
+    assign BrLtU = (a <b);
 
     
     //질문 : r, i type에서 계산결과가 0일수도 있는거 아닌가? 그럼 zero는 1을 가져 branch가 일어나는거 아님?

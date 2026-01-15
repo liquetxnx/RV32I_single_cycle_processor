@@ -23,7 +23,11 @@ SRCS := $(wildcard src/*.v)
 TB   := tb/tb_cpu.v
 SIM  := sim
 
+TB2 := tb/tb_base.v
+SIM2 := sim2
+
 VCD := waves_cpu.vcd
+VCD2 := waves_base.vcd
 
 # ELF/HEX/시뮬레이터까지
 all: $(ELF) $(HEX) $(SIM) $(VCD)
@@ -46,7 +50,7 @@ dump: $(ELF)
 
 
 clean:
-	rm -f $(ELF) $(HEX) $(SIM) $(VCD) prog.dump
+	rm -f $(ELF) $(HEX) $(SIM) $(VCD) prog.dump trace.log Verification_result
 
 
-.PHONY: all dump wave clean print
+.PHONY: all dump base clean 

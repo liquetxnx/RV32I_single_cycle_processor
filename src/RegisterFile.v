@@ -28,9 +28,9 @@ end
 */
 
 always @(posedge clk) begin
+    rg[0] = 32'h0; 
     if (reset) begin
-        rg[0] = 32'h0;
-        rg[2] = 32'h100;
+        rg[2] = 32'h4000;//fix stack pointer 
     end
 
     if(RegWrite==1 && rd != 5'b0) begin

@@ -10,7 +10,7 @@ module Branch_Unit(
 );
 
 always @(*) begin
-    if(PcSrc == 2'b10) begin
+    if(PcSrc == 2'b01) begin
         
         case(funct3)
             3'b000 : pcsrc = (BrEq ? PcSrc : 2'b00 );

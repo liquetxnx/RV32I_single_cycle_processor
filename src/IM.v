@@ -13,6 +13,7 @@ mem[1]=32'h00300113;
 mem[2]=32'h001101B3;
 */
 initial begin
+    #3;
     $readmemh("prog.hex", mem);
 end
 

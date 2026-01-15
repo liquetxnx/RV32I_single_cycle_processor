@@ -14,7 +14,7 @@ reg [31:0] RAM [0:4095];
     Data will be written on Testbench source code.
 
 */
-wire [9:0] DMEM_index = memory_address[11:2];
+wire [11:0] DMEM_index = memory_address[13:2];
     
 assign Data = RAM[DMEM_index];
     

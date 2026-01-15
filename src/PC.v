@@ -1,5 +1,5 @@
 /*
-    일단 reset input은 안넣었음. 후에 고민해보자
+    pc resisger made by liquetxnx 2025/10
     
 */
 
@@ -11,10 +11,7 @@ module PC(
 
 );
 
-
-//assign pc_next = (PCsrc) ? (pc+imm) : (pc+32'd4); // PCsrc는 조합논리회로에서 작동한다! sequence 회로를 나타내는 always 구문안에 넣지 말자
-
-always @(posedge clk) begin // sequence logic에서는 무조건 reg에만 할당할 수 있다!
+always @(posedge clk) begin 
     if (reset) begin
         output_next_address = 0;
     end

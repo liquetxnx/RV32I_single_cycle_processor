@@ -1,3 +1,7 @@
+/*
+    Sigle cycle processor Testbench made by liquetxnx 2026/1
+*/
+
 `timescale 1ns/1ps
 
 module tb_cpu;

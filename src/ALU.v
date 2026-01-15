@@ -1,6 +1,12 @@
-//RV32I ALU
-//ADD, SUB, AND, OR ,XOR, SLL, SRL, SRA, SLT, SLTU
+/*
+    ALU module made by liquetxnx on 2025/10 
 
+    10 basic command (add, sub, and , or , xor, sll, srl, sra, slt, sltu)
+
+    Branch flag (BrEq, BrLt, BrLtU) is made on ALU 
+    : because arthimetic operation is needed.
+
+*/
 module ALU(
 
     input wire [31:0] a,
@@ -38,8 +44,8 @@ always @(*) begin
         XOR: result = a^b;
         SLL: result = a << shamt;
         SRL: result = a >> shamt;
-        SRA: result = sa >>> shamt;//verilog는 산술 시프트도 제공한다. 개꿀
-        SLT: result = (sa < sb);//참이면 알아서 1을 result에 저장, 아니면 0 저장
+        SRA: result = sa >>> shamt;
+        SLT: result = (sa < sb);
         SLTU:result = (a < b);
         default: result = 32'b0;
         
@@ -52,8 +58,5 @@ end
     assign BrLt = overflow^result[31];
     assign BrLtU = (a <b);
 
-    
-    //질문 : r, i type에서 계산결과가 0일수도 있는거 아닌가? 그럼 zero는 1을 가져 branch가 일어나는거 아님?
-    // 답 : control unit에서 branch일 경우 opcode를 zero와 연산해서 pcsrc를 조절하면 됨.
 
 endmodule

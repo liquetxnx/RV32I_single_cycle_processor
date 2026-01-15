@@ -1,3 +1,12 @@
+/*
+    pc_next made by liquetxnx 2025/12
+
+    Reason why made it?
+
+    Too complex code on data path when do not merge pc_next content to pc_next
+
+*/
+
 module PC_Next(
     input wire [31:0] Current_pc,
     input wire [31:0] Imm,
@@ -14,7 +23,7 @@ wire [31:0] pc_jalr;
 
 assign pc_plus4 = Current_pc + 32'd4;
 assign pc_branch = Current_pc + Imm;
-assign pc_jalr = {ALU_Output[31:1],1'b0};
+assign pc_jalr = {ALU_Output[31:1],1'b0}; //jalr : pc = (imm+rs1) & -1
 
 always @(*) begin
     

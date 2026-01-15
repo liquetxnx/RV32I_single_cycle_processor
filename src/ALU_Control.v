@@ -1,3 +1,13 @@
+/*
+    ALU control made by liquetxnx on 2025/12
+
+    ALU_control is separated by Control_ unit 
+
+    : Control unit is too heavy if add alu_control
+
+*/
+
+
 module ALU_Control(
     input wire [31:0] Instr,
     input wire [1:0] ALU_Op,

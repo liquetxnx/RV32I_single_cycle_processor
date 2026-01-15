@@ -1,5 +1,9 @@
 # RV32I-single_cycle_processor
 
+This project is clear. 
+
+2025/10 ~ 2026/1
+
 # 0.TL
 
 - **Core** : RV32I single cycle processor (Verilog)

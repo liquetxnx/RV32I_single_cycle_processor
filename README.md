@@ -39,7 +39,7 @@ This project is clear.
 ## Expected output(file)
 - Verifiaction_result (pass/fail file)
 - trace.log (log data when reg_write, mem_write happen)
-- waves_cpu.v (simulation data)
+- waves_cpu.vcd (simulation data)
 
 
 # 1. Project Overview
@@ -204,7 +204,7 @@ Overall, the signature array turns CPU verification into a simple PASS/FAIL memo
 
 # 7. Limitation and Next Goal
 
-- **Can't be runned modern computer**
+- **Can't be runned on modern computer**
 	- not implemented any `CSRS` command
 	- Limited memory (16KB)
 	- Not Piped-line and single core (too slow)

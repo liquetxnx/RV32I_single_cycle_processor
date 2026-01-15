@@ -119,7 +119,7 @@ This project is clear.
 
 
 
-# 4. Implmented Instructions
+# 4. Supported Instructions
 
 > Note: Only **word** load/store are implemented: `lw`, `sw`  
 > Byte/halfword memory ops are **not** supported: `lb/lh/lbu/lhu/sb/sh`

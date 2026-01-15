@@ -27,6 +27,8 @@ This project is clear.
 - **Run** : make, (and "gtkwave waves_cpu.vcd")
 - **Limitation and Next goal** : Explain below.
 
+- **More detail** : https://velog.io/@liquetxnx22/series/RISC-V
+
 ## Environment :
 - 	Linux
 -	Icarus Verilog
@@ -147,10 +149,7 @@ This project is clear.
 
 - Operate cpu by simple c code(*prog.c*) to verification.
 
-- All command except ***AUIPC*** is verified on tb_cpu.vcd
->It is difficult to indicate ***AUIPC*** on C code in small memory(16KB)
-
-- Load and Store and JAL command are verified if verification are all passed. 
+- ***All command is verified on tb_cpu.vcd***
 
 ### Why I used signature (sig[]) array for verification?
 

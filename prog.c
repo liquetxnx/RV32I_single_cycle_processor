@@ -5,6 +5,7 @@
 volatile uint32_t * const sig = (uint32_t*) SIG_ADDR;
 
 uint32_t add1(uint32_t x);// jalr 감지 위한 함수
+uint32_t fib();
 
 uint32_t main(void){
     int32_t A=6, B=-10, D=8, F=2;
@@ -47,7 +48,7 @@ uint32_t main(void){
     //A=7
     sig[19]=A;
 
-    //branch 확인 및 jal 확인 A=7, B=-10
+    //branch 확인  A=7, B=-10
     if(A==B) sig[20]=0;
     else sig[20]=1;
 
@@ -66,10 +67,32 @@ uint32_t main(void){
     unsigned x = 0x123456;
 
     sig[23]=x;   
-    sig[24]=0x7FFFFFFF;
+    
 
     //AUIPC는 하드코딩으로 tb에서 직접확인
+
+    sig[34]=fib()+2; // jal 확인, 만약 잘 리턴되었다면 10이 저장
+
+    uint32_t pc;
+    asm volatile(
+        "auipc %0, 0\n"     // %0 = PC + 0
+        : "=r"(pc)
+    );
+    sig[35] = pc;
+    sig[36]=0x7FFFFFFF;
+
     return 0;
 }
 
 uint32_t add1(uint32_t x){return x+1;}
+
+uint32_t fib(){
+    uint32_t i;
+    sig[24] =1;
+    sig[25] =1;
+
+    for(i=26;i<34;i++){ 
+        sig[i]=sig[i-1]+sig[i-2];
+    }
+    return 8;
+}

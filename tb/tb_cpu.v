@@ -126,8 +126,8 @@ always @(posedge clk) begin
         // =========================================================
         CHECK_RAM(result, 138, 32'hFFFF_FFFC, "I-type : addi");
         CHECK_RAM(result, 139, 32'd1536,      "I-type : slli");
-        CHECK_RAM(result, 140, 32'hFFFF_FFFD, "I-type : srli");
-        CHECK_RAM(result, 141, 32'h3FFF_FFFD, "I-type : srai");
+        CHECK_RAM(result, 140, 32'hFFFF_FFFD, "I-type : srai");
+        CHECK_RAM(result, 141, 32'h3FFF_FFFD, "I-type : srli");
         CHECK_RAM(result, 142, 32'd1,         "I-type : slti");
         CHECK_RAM(result, 143, 32'd0,         "I-type : sltui");
         CHECK_RAM(result, 144, 32'd14,        "I-type : xori");
@@ -144,9 +144,26 @@ always @(posedge clk) begin
         CHECK_RAM(result, 150, 32'd0,         "B-type : bltu and bgeu");
 
         CHECK_RAM(result, 151, 32'h0012_3456, "U-type : lui");
-        CHECK_RAM(result, 151, 32'h0012_3456, "J-type : JAL");
-        CHECK_RAM(result, 152, 32'h7FFF_FFFF, "sig[23] = 0x7FFFFFFF : end sign");
+  
+    
 
+        // =========================================================
+        // (4) 추가: Fibonachi 수열 
+        // =========================================================
+        CHECK_RAM(result, 152, 32'd1, "Fibo : a[0]=1");
+        CHECK_RAM(result, 153, 32'd1, "Fibo :a[1]=1");
+        CHECK_RAM(result, 154, 32'd2, "Fibo :a[2]=2");
+        CHECK_RAM(result, 155, 32'd3, "Fibo :a[3]=3");
+        CHECK_RAM(result, 156, 32'd5, "Fibo :a[4]=5");
+        CHECK_RAM(result, 157, 32'd8, "Fibo :a[5]=8");
+        CHECK_RAM(result, 158, 32'd13, "Fibo :a[6]=13");
+        CHECK_RAM(result, 159, 32'd21, "Fibo :a[7]=21");
+        CHECK_RAM(result, 160, 32'd34,  "Fibo :a[8]=34");
+        CHECK_RAM(result, 161, 32'd55,  "Fibo :a[9]=55");
+
+        CHECK_RAM(result, 162, 32'd10,         "J-type : JAL");
+        CHECK_RAM(result, 163, 32'h300,         "U-type : AUIPC"); // this command is located on 0x300 which can be checked by "dump file"
+        CHECK_RAM(result, 164, 32'h7FFF_FFFF, "end sign : pass");
         // =========================================================
         // 요약 출력
         // =========================================================

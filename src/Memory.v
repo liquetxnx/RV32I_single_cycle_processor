@@ -3,7 +3,8 @@
 
     Size : 16KB
     Addressing : Word
-    Edians : Big Endian
+
+    Not considerd endians : 1-word addressing
 */
 
 module Memory(

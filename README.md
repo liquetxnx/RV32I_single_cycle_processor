@@ -7,9 +7,9 @@ This project is clear.
 # 0.TL
 
 - **Core** : RV32I single cycle processor (Verilog)
-- **Support** : R, I, S, B, J, U type (only lw and sw are supported in loading and store instrution)
+- **Support** : R, I, S, B, J, U type (only word load and store are supported in loading and store instrution)
 - **Memory architecture** : Harvard Architecture(seperate Instruction memory, and Data memory) 
-- **Addressing** : PC and IM(4KB) is byte-addressed otherwise, Memory(16KB) are word-addressed.
+- **Addressing** : PC and IM(8KB) is byte-addressed otherwise, Memory(16KB) are word-addressed.
 - **Endians** : Little - endians (RISC-V default)
 - **Verification** : self-checking C-code excuted by tb_cpu.v
 - **Run** : make, (and "gtkwave waves_cpu.vcd")
@@ -82,13 +82,14 @@ This project is clear.
 ## Endians
 - Instrution is stored by 1-byte little endians in IM.
 	- For example, Instruction `0x01020304` is stored by `04 03 02 01` in IM
+- Data is stored by 1-word, so do not considered endians.
 
 ## Addressing
 ### Insturtion Memory(IM)
 - PC is byte address (increments by 4 byte) :
     - pc_next = pc + 4 (unless branch/jump)
-- IM is stored as 8-bit (1-bytes) ( `mem[1024][8]` )
-- Size is `4KB`
+- IM is stored as 8-bit (1-bytes) ( `mem[8192][8]` )
+- Size is `8KB`
 - Instruction fetch uses in bytes and by little - endians :
 	- pc = current pc address (1bytes)
 	- Instr = [8bytes, 8bytes, 8bytes, 8bytes] = [IM[pc+3], IM[pc+2], IM[pc+1], IM[pc]]

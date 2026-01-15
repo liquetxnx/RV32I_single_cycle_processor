@@ -8,7 +8,7 @@ module IM(
     output wire [31:0] Instr
 );
 
-//4KB IM
+//8KB IM
 reg [7:0] mem [0:8191];
 
 initial begin

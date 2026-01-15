@@ -134,7 +134,7 @@ This project is clear.
 | I (Load) | `lw` | ✅ | **Word only** |
 | S (Store) | `sw` | ✅ | **Word only** |
 | B | `beq`, `bne`, `blt`, `bge`, `bltu`, `bgeu` | ✅ | Branch compare + PC redirect |
-| U | `lui`, `auipc` | ✅⚠️ | Large constant / PC-relative *AUIPC verification is not contained on verification* |
+| U | `lui`, `auipc` | ✅⚠️ | Large constant / PC-relative *AUIPC verification is not general* |
 | J | `jal` | ✅ | Link register writeback |
 | I (Jump) | `jalr` | ✅ | Target = `(rs1 + imm) & ~1` |
 | RV32M | `mul/div/rem*` | ❌ | Not implemented |

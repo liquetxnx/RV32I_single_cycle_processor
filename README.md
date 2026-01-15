@@ -210,3 +210,7 @@ Overall, the signature array turns CPU verification into a simple PASS/FAIL memo
 - **Next Goal**
 	- To implement pipe-line, forwarding and hazard control cpu
 
+# 8. License
+This project is licensed under the MIT License - see the [LICENSE](./License) file for details.
+
+Copyright (c) 2026 Eunsang(liquetxnx)

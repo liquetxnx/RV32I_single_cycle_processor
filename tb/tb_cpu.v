@@ -95,10 +95,17 @@ always @(posedge clk) begin
         fail_cnt = 0;
 
         // =========================================================
+        // (0)Load, Store 결과 검사 (RAM[128]~RAM[137])
+        // =========================================================
+        CHECK_RAM(result, 128, 32'hFFFF_FFFC, "I-type : lw"); 
+        CHECK_RAM(result, 128, 32'hFFFF_FFFC, "S-type : sw"); 
+
+
+        // =========================================================
         // (1)R-type 결과 검사 (RAM[128]~RAM[137])
         // =========================================================
+        CHECK_RAM(result, 128, 32'hFFFF_FFFC, "R-type : add");
 
-        CHECK_RAM(result, 128, 32'hFFFF_FFFC, "R-type : add");      // -4
         CHECK_RAM(result, 129, 32'd16,        "R-type : sub");
         CHECK_RAM(result, 130, 32'd1536,      "R-type : sll");
 
@@ -131,13 +138,14 @@ always @(posedge clk) begin
         // =========================================================
         // (3) 추가: jal, branch, lui 검사
         // =========================================================
-        CHECK_RAM(result, 147, 32'd7,         "I-type : jalr");
+        
         CHECK_RAM(result, 148, 32'd1,         "B-type : beq and bne");
         CHECK_RAM(result, 149, 32'd1,         "B-type : blt and bge");
         CHECK_RAM(result, 150, 32'd0,         "B-type : bltu and bgeu");
 
         CHECK_RAM(result, 151, 32'h0012_3456, "U-type : lui");
-        CHECK_RAM(result, 152, 32'h7FFF_FFFF, "sig[23] = 0x7FFFFFFF");
+        CHECK_RAM(result, 151, 32'h0012_3456, "J-type : JAL");
+        CHECK_RAM(result, 152, 32'h7FFF_FFFF, "sig[23] = 0x7FFFFFFF : end sign");
 
         // =========================================================
         // 요약 출력

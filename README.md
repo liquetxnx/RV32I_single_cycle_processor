@@ -2,7 +2,7 @@
 
 This project is clear. 
 
-2025/10 ~ 2026/1
+2025/10 ~ 2026/1/15
 
 # 0.TL
 
@@ -13,6 +13,7 @@ This project is clear.
 - **Endians** : Little - endians (RISC-V default)
 - **Verification** : self-checking C-code excuted by tb_cpu.v
 - **Run** : make, (and "gtkwave waves_cpu.vcd")
+- **Limitation and Next goal** : Explain below.
 
 ## Environment :
 - 	Linux
@@ -98,7 +99,7 @@ This project is clear.
 - Size is `16KB`
 - Effective address is byte addresses; 
 	- DMEM_index = alu_result >> 2
-	- It is implemented by DMEM_index = alu_result[11:2]
+	- It is implemented by DMEM_index = alu_result[13:2]
 
 
 # 4. Implmented Instructions
@@ -178,3 +179,13 @@ Overall, the signature array turns CPU verification into a simple PASS/FAIL memo
 	- make rv32i assembly files on `prog.c` code.
 - 'make clean'
 	- clean all files from 'make' command
+
+# 7. Limitation and Next Goal
+
+- **Can't be runned modern computer**
+	- not implemented any `CSRS` command
+	- Limited memory (16KB)
+	- Not Piped-line and single core (too slow)
+
+- **Next Goal**
+	- To implement pipe-line, forwarding and hazard control cpu

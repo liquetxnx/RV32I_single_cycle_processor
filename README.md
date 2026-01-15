@@ -8,14 +8,14 @@ This project is clear.
 - [0. TL/DR](#0-tl/dr)
 - [1. Project Overview](#1-overview)
 - [2. Architecture](#2-architecture)
-- [3. Supported Instructions](#3-supported-instructions)
-- [4. Memory Design](#4-memory-design)
+- [3. Memory Design](#3-memory-design)
+- [4. Supported Instructions](#4-supported-instructions)
 - [5. Verification](#5-verification)
-- [6. How to Run](#6-how-to-run)
+- [6. How to Run?](#6-how-to-run)
 - [7. Limitation and Next Goal](#7-lim)
 
 
-# 0.TL/DR
+# 0. TL/DR
 
 - **Core** : RV32I single cycle processor (Verilog)
 - **Support** : R, I, S, B, J, U type (only word load and store are supported in loading and store instrution)
@@ -40,6 +40,7 @@ This project is clear.
 - trace.log (log data when reg_write, mem_write happen)
 - waves_cpu.v (simulation data)
 
+
 # 1. Project Overview
 
 **Goals**
@@ -52,6 +53,7 @@ This project is clear.
 -	No CSR/privilege/interrupt
 -	No MUL and DIV for (RV32M)
 -	Misaligned access handling
+
 
 # 2. Architecture
 
@@ -89,7 +91,8 @@ This project is clear.
 		-Mux 4 to 1
 
 
-# 3. Endians and Addressing 
+
+# 3. Memory Design
 ## Endians
 - Instrution is stored by 1-byte little endians in IM.
 	- For example, Instruction `0x01020304` is stored by `04 03 02 01` in IM
@@ -115,6 +118,7 @@ This project is clear.
 	- It is implemented by DMEM_index = alu_result[13:2]
 
 
+
 # 4. Implmented Instructions
 
 > Note: Only **word** load/store are implemented: `lw`, `sw`  
@@ -131,6 +135,7 @@ This project is clear.
 | J | `jal` | ✅ | Link register writeback |
 | I (Jump) | `jalr` | ✅ | Target = `(rs1 + imm) & ~1` |
 | RV32M | `mul/div/rem*` | ❌ | Not implemented |
+
 
 
 
@@ -180,6 +185,7 @@ Overall, the signature array turns CPU verification into a simple PASS/FAIL memo
 	- ![waveform](Image/simulation.png)
 	- waveform dump for debugging in GTKWave
 
+
 # 6. How to Run?
 >First of all, you have to install gtkwave, iverilog, gcc compiler. 
 
@@ -192,6 +198,7 @@ Overall, the signature array turns CPU verification into a simple PASS/FAIL memo
 	- make rv32i assembly files on `prog.c` code.
 - 'make clean'
 	- clean all files from 'make' command
+
 
 # 7. Limitation and Next Goal
 

@@ -4,7 +4,18 @@ This project is clear.
 
 2025/10 ~ 2026/1/15
 
-# 0.TL
+## Table of Contents
+- [0. TL/DR](#0-tl/dr)
+- [1. Project Overview](#1-overview)
+- [2. Architecture](#2-architecture)
+- [3. Supported Instructions](#3-supported-instructions)
+- [4. Memory Design](#4-memory-design)
+- [5. Verification](#5-verification)
+- [6. How to Run](#6-how-to-run)
+- [7. Limitation and Next Goal](#7-lim)
+
+
+# 0.TL/DR
 
 - **Core** : RV32I single cycle processor (Verilog)
 - **Support** : R, I, S, B, J, U type (only word load and store are supported in loading and store instrution)
@@ -29,7 +40,7 @@ This project is clear.
 - trace.log (log data when reg_write, mem_write happen)
 - waves_cpu.v (simulation data)
 
-# 1.Project Overview
+# 1. Project Overview
 
 **Goals**
 -	Make single core which can excute c code
@@ -82,7 +93,7 @@ This project is clear.
 ## Endians
 - Instrution is stored by 1-byte little endians in IM.
 	- For example, Instruction `0x01020304` is stored by `04 03 02 01` in IM
-	
+
 - Data Memory is stored by 1-word, so do not considered endians.
 
 ## Addressing
@@ -191,3 +202,4 @@ Overall, the signature array turns CPU verification into a simple PASS/FAIL memo
 
 - **Next Goal**
 	- To implement pipe-line, forwarding and hazard control cpu
+

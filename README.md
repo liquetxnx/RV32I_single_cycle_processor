@@ -92,12 +92,12 @@ This project is clear.
 - Instruction fetch uses in bytes and by little - endians :
 	- pc = current pc address (1bytes)
 	- Instr = [8bytes, 8bytes, 8bytes, 8bytes] = [IM[pc+3], IM[pc+2], IM[pc+1], IM[pc]]
--  Therefore pc address must be word-aligned for correct instruction fetch.
 
 ### Data Memory
 - Data memory is also stored as 32-bit words like IM (array of `mem[word_index]`)
 - Size is `16KB`
-- Effective address is byte addresses; 
+- Effective address is word addresses; 
+	- `mem[4096][32]`
 	- DMEM_index = alu_result >> 2
 	- It is implemented by DMEM_index = alu_result[13:2]
 

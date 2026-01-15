@@ -82,7 +82,8 @@ This project is clear.
 ## Endians
 - Instrution is stored by 1-byte little endians in IM.
 	- For example, Instruction `0x01020304` is stored by `04 03 02 01` in IM
-- Data is stored by 1-word, so do not considered endians.
+	
+- Data Memory is stored by 1-word, so do not considered endians.
 
 ## Addressing
 ### Insturtion Memory(IM)

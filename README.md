@@ -5,14 +5,14 @@ This project is clear.
 2025/10 ~ 2026/1/15
 
 ## Table of Contents
-- [0. TL/DR](#0-tl/dr)
-- [1. Project Overview](#1-overview)
+- [0. TL/DR](#0-tldr)
+- [1. Project Overview](#1-project-overview)
 - [2. Architecture](#2-architecture)
 - [3. Memory Design](#3-memory-design)
 - [4. Supported Instructions](#4-supported-instructions)
 - [5. Verification](#5-verification)
 - [6. How to Run?](#6-how-to-run)
-- [7. Limitation and Next Goal](#7-lim)
+- [7. Limitation and Next Goal](#7-limitation-and-next-goal)
 
 
 # 0. TL/DR
